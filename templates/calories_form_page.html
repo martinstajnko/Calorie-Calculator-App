@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="static/main.css">
+    </head>
+    <body>
+        <h1>Calorie App</h1>
+        <br>
+        <p>This web app is useful to calculate, how many calories approximatelly needs your body today.</p>
+        <br>
+        <h2>Calories calculator</h2>
+        <p>Fill in forms and click the button Calculate to get the result!</p>  
+        <form action="/" method="post">
+            <p>Today's weather counts too. Tell us where you are so we include today's temperature into the calculation.</p>
+            {{caloriesform.city.label}} {{caloriesform.city}}
+            <br>
+            {{caloriesform.country.label}} {{caloriesform.country}}        
+            <br>
+            <p>Let's get some info about you:</p>
+            {{caloriesform.weight.label}} {{caloriesform.weight}}
+            <hr>
+            {{caloriesform.height.label}} {{caloriesform.height}}
+            <hr>
+            {{caloriesform.age.label}} {{caloriesform.age}}
+            <hr>
+            {{caloriesform.sex.label}} {{caloriesform.sex}}
+            <br>
+            <h2>{{caloriesform.button}}</h2>
+            {% if result==True %}
+                {% if current_temperature != False %}
+                    <p>Temperature in {{city}}-{{country}} is {{current_temperature}}°C</p>
+                    <h3>You need to ingest {{calories2}} kJ ({{calories}} kcal) today</h3>
+                {% else %}
+                    <p>For {{city}} in {{country}} has no information about temperature</p>
+
+                {% endif %}
+            {% endif %}
+        </form>
+    </body>
+</html>
